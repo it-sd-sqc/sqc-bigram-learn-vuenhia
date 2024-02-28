@@ -61,4 +61,16 @@ class MainTest {
   }
 
   // TODO: Create your test(s) below. /////////////////////////////////////////
+  // Bug: Does not accept "     bz'vm.,bualkc snatoheu   s" as it should. 
+  @Test
+  void createBigrams() {
+    Connection db = Main.createConnection();
+    String src = "    bz'vm.,bualkc snatoheu   s";
+    assertDoesNotThrow(
+      () -> {
+        Main.createBigrams(db, src);
+        Main.getWordCount(db);
+      });
+    
+  }
 }
